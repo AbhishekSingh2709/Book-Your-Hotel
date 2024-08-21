@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ReviewService
@@ -24,17 +25,20 @@ public class ReviewService
         this.pr = pr;
     }
 
-    public ResponseEntity<?> addReview(AppUserEntity user , Long id, ReviewsDto review )
+    public ResponseEntity<?> addReview(AppUserEntity user , String id, ReviewsDto review )
     {
         Optional<PropertyEntity> opId = pr.findById(id);
         PropertyEntity propertyEntity = opId.get();
 
         if (rr.findReviewByUser(user, propertyEntity)==null) {
             ReviewsEntity re = new ReviewsEntity();
+            String reviewId = UUID.randomUUID().toString();
+            re.setId(reviewId);
             re.setRatings(review.getRating());
             re.setDescription(review.getDescription());
             re.setAppUserEntity(user);
             re.setPropertyEntity(propertyEntity);
+
             ReviewsEntity save = rr.save(re);
 
             ReviewsDto rd = new ReviewsDto();

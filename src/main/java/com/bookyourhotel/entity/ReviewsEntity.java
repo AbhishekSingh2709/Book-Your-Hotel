@@ -9,9 +9,8 @@ import lombok.Data;
 @Table(name = "reviews")
 public class ReviewsEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
     @Column(name = "ratings", nullable = false)
     private Integer ratings;

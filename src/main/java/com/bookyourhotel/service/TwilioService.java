@@ -19,8 +19,7 @@ public class TwilioService {
 
     public String sendSms(String to, String message) {
        Message sms = Message
-                       .creator(new PhoneNumber(to),
-                       new PhoneNumber(twilioConfig.getTwilioPhoneNumber()),message)
+                       .creator(new PhoneNumber(to), new PhoneNumber(twilioConfig.getTwilioPhoneNumber()),message)
                        .create();
        return sms.getSid();
     }

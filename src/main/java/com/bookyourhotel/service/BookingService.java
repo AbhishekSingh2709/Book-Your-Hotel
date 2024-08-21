@@ -9,6 +9,8 @@ import com.bookyourhotel.repository.PropertyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 @Service
 public class BookingService
 {
@@ -26,7 +28,7 @@ public class BookingService
         this.ts = ts;
     }
 
-    public BookingDto bookProperty(long id, AppUserEntity user , BookingDto booking)
+    public BookingDto bookProperty(String id, AppUserEntity user , BookingDto booking)
     {
         PropertyEntity property = pr.findById(id).get();
         Integer pricePerNight = property.getPrice();
@@ -60,6 +62,8 @@ public class BookingService
     public BookingEntity DtoToEntity (BookingDto booking)
     {
         BookingEntity bookingEntity = new BookingEntity();
+        String bookindId = UUID.randomUUID().toString();
+        bookingEntity.setId(bookindId);
         bookingEntity.setName(booking.getName());
         bookingEntity.setEmailId(booking.getEmailId());
         bookingEntity.setMobile(booking.getMobile());

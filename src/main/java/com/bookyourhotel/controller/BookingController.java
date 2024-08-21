@@ -19,7 +19,7 @@ public class BookingController
     }
 
     @PostMapping("/bookProperty")
-    public ResponseEntity<BookingDto> createBooking(@RequestParam long propertyId,
+    public ResponseEntity<BookingDto> createBooking(@RequestParam String propertyId,
                                                     @AuthenticationPrincipal AppUserEntity user,
                                                     @RequestBody BookingDto booking)
     {

@@ -8,6 +8,8 @@ import com.bookyourhotel.repository.PropertyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 @Service
 public class ImagesService
 {
@@ -21,14 +23,17 @@ public class ImagesService
         this.bs = bs;
     }
 
-    public ImagesDto uploadImages(MultipartFile file , String bucketName , Long id)
+    public ImagesDto uploadImages(MultipartFile file , String bucketName , String id)
     {
         PropertyEntity property = pr.findById(id).get();
         String imageUrl = bs.uploadFile(file, bucketName);
 
         ImagesEntity entity = new ImagesEntity();
+        String imageId = UUID.randomUUID().toString();
+        entity.setId(imageId);
         entity.setPropertyEntity(property);
         entity.setImageUrl(imageUrl);
+
         ImagesEntity savedImage = ir.save(entity);
 
         ImagesDto dto = new ImagesDto();

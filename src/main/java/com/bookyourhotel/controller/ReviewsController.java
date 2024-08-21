@@ -23,7 +23,7 @@ public class ReviewsController
 
     @PostMapping("/addReview")
     public ResponseEntity<?> postReviews(@AuthenticationPrincipal AppUserEntity user,
-                                                  @RequestParam Long propertyId,
+                                                  @RequestParam String propertyId,
                                                   @RequestBody ReviewsDto reviews)
     {
         ResponseEntity<?> reviewsDetails = rs.addReview(user, propertyId, reviews);

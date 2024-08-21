@@ -16,7 +16,8 @@ public class CountryController
 {
     private HotelService hs;
 
-    public CountryController(HotelService hs) {
+    public CountryController(HotelService hs)
+    {
         this.hs = hs;
     }
 

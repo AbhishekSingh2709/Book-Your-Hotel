@@ -9,9 +9,8 @@ import lombok.Data;
 public class ImagesEntity
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
     @Column(name = "image_url", nullable = false, length = 2000)
     private String imageUrl;

@@ -30,8 +30,8 @@ public class PropertyController
     }
 
     @PostMapping("/addProperty")
-    public ResponseEntity<PropertyDto> addPropertyUser(@RequestParam Long locationId ,
-                                             @RequestParam Long countryId,
+    public ResponseEntity<PropertyDto> addPropertyUser(@RequestParam String locationId ,
+                                             @RequestParam String countryId,
                                              @RequestBody PropertyDto dto)
     {
             PropertyDto propertyDto = hs.addProperty(locationId , countryId ,dto );

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ReviewsRepository extends JpaRepository<ReviewsEntity, Long> {
+public interface ReviewsRepository extends JpaRepository<ReviewsEntity, String> {
 
     @Query("select r from ReviewsEntity r where r.appUserEntity=:user and r.propertyEntity=:property")
     ReviewsEntity findReviewByUser(@Param("user") AppUserEntity user ,@Param("property") PropertyEntity property);

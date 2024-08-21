@@ -21,7 +21,7 @@ public class ImagesController
     @PostMapping(path = "/uploadImages/file/{bucketName}/property/{propertyId}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ImagesDto> uploadPropertyImages(@RequestParam MultipartFile file,
                                                           @PathVariable String bucketName,
-                                                          @PathVariable Long propertyId
+                                                          @PathVariable String propertyId
                                                           //@AuthenticationPrincipal AppUserEntity user
     )
     {

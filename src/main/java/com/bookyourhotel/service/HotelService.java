@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class HotelService {
@@ -27,7 +28,7 @@ public class HotelService {
         this.cr = cr;
     }
 
-    public PropertyDto addProperty( Long locationId , Long countryId , PropertyDto dto)
+    public PropertyDto addProperty( String locationId , String countryId , PropertyDto dto)
     {
         Optional<LocationEntity> opLId = lr.findById(locationId);
         LocationEntity locationDetails = opLId.get();
@@ -36,6 +37,8 @@ public class HotelService {
         CountryEntity countryDetails = opCId.get();
 
         PropertyEntity entity = new PropertyEntity();
+        String propertyId = UUID.randomUUID().toString();
+        entity.setId(propertyId);
         entity.setName(dto.getName());
         entity.setNoGuests(dto.getNoGuests());
         entity.setNoBedrooms(dto.getNoBedrooms());
@@ -63,6 +66,8 @@ public class HotelService {
     public LocationDto addLocation(LocationDto dto)
     {
         LocationEntity entity = new LocationEntity();
+        String locatonId = UUID.randomUUID().toString();
+        entity.setId(locatonId);
         entity.setName(dto.getName());
 
         LocationEntity savedLocation = lr.save(entity);
@@ -77,6 +82,8 @@ public class HotelService {
     public CountryDto addCountry(CountryDto dto)
     {
         CountryEntity entity = new CountryEntity();
+        String countryId = UUID.randomUUID().toString();
+        entity.setId(countryId);
         entity.setName(dto.getName());
         CountryEntity savedCountry = cr.save(entity);
 

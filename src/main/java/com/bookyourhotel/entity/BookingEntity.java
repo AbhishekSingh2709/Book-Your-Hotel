@@ -8,9 +8,8 @@ import lombok.Data;
 @Table(name = "bookings")
 public class BookingEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
     @Column(name = "name", nullable = false)
     private String name;

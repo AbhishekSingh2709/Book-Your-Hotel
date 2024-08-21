@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AppUserService
@@ -44,6 +45,8 @@ public class AppUserService
     public AppUserEntity DtoToEntity(AppUserDto dto)
     {
         AppUserEntity entity = new AppUserEntity();
+        String appUserId = UUID.randomUUID().toString();
+        entity.setId(appUserId);
         entity.setName(dto.getName());
         entity.setEmailid(dto.getEmailid());
         entity.setPassword(BCrypt.hashpw(dto.getPassword(),BCrypt.gensalt(10)));

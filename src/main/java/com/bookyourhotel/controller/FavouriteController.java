@@ -19,7 +19,7 @@ public class FavouriteController
     }
 
     @PostMapping("/addFavourite")
-    public ResponseEntity<FavouriteEntity> addFavourites(@AuthenticationPrincipal AppUserEntity user, @RequestParam Long propertyId,
+    public ResponseEntity<FavouriteEntity> addFavourites(@AuthenticationPrincipal AppUserEntity user, @RequestParam String propertyId,
                                                          @RequestBody FavouriteEntity favourite)
     {
         FavouriteEntity favouriteEntity = fs.addFavourite(user, propertyId, favourite);

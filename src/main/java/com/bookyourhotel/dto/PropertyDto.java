@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class PropertyDto
 {
-    private Long id;
+    private String id;
     private String name;
     private Integer noGuests;
     private Integer noBedrooms;
